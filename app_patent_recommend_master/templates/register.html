@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block register %}
+  <section class="container">
+    <form method="post" action="{{ url_for('register') }}">
+        <p>{{ warning }}</p>
+      <div class="form-group col-md-12">
+        <label for="username" class="col-form-label">Email:  </label><br>
+        <input type="text" class="form-control" id="username" name="username" placeholder="Enter username / email">
+      </div>
+
+      <div class="form-group col-md-12">
+        <label for="password">Password</label>
+        <input type="text" class="form-control" id="password" name="password" placeholder="Enter password">
+      </div>
+
+      <div class="form-group col-md-12">
+        <button type="submit" class="btn btn-primary form-control" name="register" value="register">Register</button>
+      </div>
+    </form>
+  </section>
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block content %}
+
+  <section class="post-area section-gap ">
+    <div class="container">
+      <div class="row justify-content-center d-flex">
+        <div class="col-lg-11 post-list">
+        {% if page_headline %}
+        <h4 class="text-white bg-dark">{{ page_headline }}</h4>
+        {% endif %}
+
+          {% if items %}
+            {% for item in items %}
+              {% if item %}
+              <div class="single-post d-flex flex-row">
+                <div class="details">
+                  <div class="title d-flex flex-row justify-content-between">
+                    <div class="titles">
+                      <a href="http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO1&Sect2=HITOFF&d=PALL&p=1&u=%2Fnetahtml%2FPTO%2Fsrchnum.htm&r=1&f=G&l=50&s1={{ item[0] }}.PN.&OS=PN/{{ item[0] }}&RS=PN/{{ item[0] }}"
+                         class="single-post-link">
+                        <h4 id="{{ item[0] }}">{{ item[3] }}</h4>
+                      </a>
+                      <h6>{{ item[2] }}</h6>
+                    </div>
+                  </div>
+                  <p class=""><span class="lnr lnr-database"></span> Inventors: {{ item[15][2:-2] }}</p>
+                  <p class=""><span class="lnr lnr-database"></span> Date: {{ item[1] }}</p>
+                  <p class=""><span class="lnr lnr-database"></span> Lawyers: {{ item[16][4:-2] }}</p>
+                  <p class=""><span class="lnr lnr-database"></span> Assignee: {{ item[17][4:-2] }}</p>
+                  <p><span class="lnr lnr-database"></span>CPC:
+                  {% for i in range(6, 15) %}
+                    {% if item[i] == 1.0 %}
+                      <a class="btn btn-info btn-sm">{{ CPC_VALUES[i-6][0] }}</a>
+                      {% endif %}
+                    {% endfor %}
+                  </p>
+
+                  <ul class="btns inline list-inline">
+                  <li><a href="/similar?patent_id={{ item[0] }}">Content Based  Similar Patents</a></li>
+                  <li><a href="/citation?patent_id={{ item[0] }}">Item Based Similar Patents</a></li>
+                  </ul>
+
+                </div>
+              </div>
+              {% else %}
+                <p>0 results found.</p>
+              {% endif %}
+            {% endfor %}
+          {% else %}
+            <p class="info">0 results found.</p>
+          {% endif %}
+
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="row d-flex align-items-center justify-content-center">
+  <form action="/more" method="post" id="get-more-items">
+    <button type="submit" class="btn btn-primary"> GET CUSTOMIZED ITEMS FOR ME </button><br>
+    <small>User Based Collaborative Filtering based on users' click history</small>
+  </form>
+  </div>
+{% endblock %}
+
