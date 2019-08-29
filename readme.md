@@ -62,6 +62,6 @@ then select to download the `popular` section.
   `* Debugger PIN: 406-***-***`
   
   
-   which means app activates sucessfully, then you can try our app at http://127.0.0.1:5000/ 
+   which means app activates sucessfully, then you can try our app at http://127.0.0.1:5000/  (currently unavailable)
 
 
