@@ -1,4 +1,4 @@
-# CMPE 256 2019 Summer
+# CMPE 256 2019 Summer Group Project
 
 This is a patent recommendation system project repository for Team 7.
 You may view the report, app source code and demo video here.
